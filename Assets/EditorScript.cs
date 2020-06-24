@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class EditorScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        Vector3 pos;
+        pos.x = Mathf.RoundToInt(transform.position.x / 10f) * 10f;
+        pos.z = Mathf.RoundToInt(transform.position.z / 10f) * 10f;
+        pos.y = 0;
+        transform.position = new Vector3(pos.x, pos.y, pos.z);
     }
 }
