@@ -12,20 +12,14 @@ public class EditorScript : MonoBehaviour
     [Range (1f, 20f)] [Tooltip ("Size of the Grid for Cube Blocks")] [SerializeField] int sizeOfTheGrid = 10;
 
     TextMesh textMesh;
+    int coordinateX;
+    int coordinateZ;
 
     void Update()
     {
         GridScript();
         TextMeshScript();
-    }
-
-    private void TextMeshScript()
-    {
-        int coordinateX = Mathf.RoundToInt(transform.position.x / sizeOfTheGrid);
-        int coordinateZ = Mathf.RoundToInt(transform.position.z / sizeOfTheGrid);
-
-        textMesh = GetComponentInChildren<TextMesh>();
-        textMesh.text = Convert.ToString(coordinateX) + ","+ Convert.ToString(coordinateZ);
+        NamingCube();
     }
 
     private void GridScript()
@@ -35,5 +29,17 @@ public class EditorScript : MonoBehaviour
         pos.z = Mathf.RoundToInt(transform.position.z / sizeOfTheGrid) * sizeOfTheGrid;
         pos.y = 0;
         transform.position = new Vector3(pos.x, pos.y, pos.z);
+    }
+        private void TextMeshScript()
+    {
+        coordinateX = Mathf.RoundToInt(transform.position.x / sizeOfTheGrid);
+        coordinateZ = Mathf.RoundToInt(transform.position.z / sizeOfTheGrid);
+
+        textMesh = GetComponentInChildren<TextMesh>();
+        textMesh.text = coordinateX + ","+ coordinateZ;
+    }
+        private void NamingCube()
+    {
+        gameObject.name = coordinateX + ","+ coordinateZ;
     }
 }
