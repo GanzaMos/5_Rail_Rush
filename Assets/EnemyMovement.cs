@@ -7,13 +7,19 @@ public class EnemyMovement : MonoBehaviour
 
 {
     
-    [SerializeField] List<Block> path;
+    [SerializeField] List<Waypoint> path;
 
     void Start()
     {
-        foreach(Block block in path)
+        StartCoroutine(PrintWayPoint());
+    }
+
+    IEnumerator PrintWayPoint()
+    {
+        foreach (Waypoint waypoint in path)
         {
-            print(block.name);
+            transform.position = waypoint.transform.position;
+            yield return new WaitForSeconds(1f);
         }
     }
 
