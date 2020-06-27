@@ -3,14 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [ExecuteInEditMode]
 
 public class EditorScript : MonoBehaviour
 
 {
     [Range (1f, 20f)] [Tooltip ("Size of the Grid for Cube Blocks")] [SerializeField] int sizeOfTheGrid = 10;
-
+    
     TextMesh textMesh;
     int coordinateX;
     int coordinateZ;
@@ -36,7 +35,9 @@ public class EditorScript : MonoBehaviour
         coordinateZ = Mathf.RoundToInt(transform.position.z / sizeOfTheGrid);
 
         textMesh = GetComponentInChildren<TextMesh>();
-        textMesh.text = coordinateX + ","+ coordinateZ;
+        string labelText = coordinateX + ","+ coordinateZ;
+        textMesh.text = labelText;
+        gameObject.name = labelText;
     }
         private void NamingCube()
     {
