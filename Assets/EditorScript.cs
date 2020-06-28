@@ -8,39 +8,38 @@ using UnityEngine;
 public class EditorScript : MonoBehaviour
 
 {
-    [Range (1f, 20f)] [Tooltip ("Size of the Grid for Cube Blocks")] [SerializeField] int sizeOfTheGrid = 10;
-    
     TextMesh textMesh;
-    int coordinateX;
-    int coordinateZ;
+    Waypoint waypoint;
+
+    void Awake() 
+    {
+        waypoint = GetComponent<Waypoint>();
+    }
 
     void Update()
     {
-        GridScript();
-        TextMeshScript();
-        NamingCube();
+        SnapToGrid();
+        LabelUpdate();
     }
 
-    private void GridScript()
+    private void SnapToGrid()
     {
-        Vector3 pos;
-        pos.x = Mathf.RoundToInt(transform.position.x / sizeOfTheGrid) * sizeOfTheGrid;
-        pos.z = Mathf.RoundToInt(transform.position.z / sizeOfTheGrid) * sizeOfTheGrid;
-        pos.y = 0;
-        transform.position = new Vector3(pos.x, pos.y, pos.z);
+        int sizeOfTheGrid = waypoint.GetGridSize();
+        transform.position = new Vector3(
+            waypoint.GetGridPos().x,
+            0f,
+            waypoint.GetGridPos().y
+        );
     }
-        private void TextMeshScript()
+        private void LabelUpdate()
     {
-        coordinateX = Mathf.RoundToInt(transform.position.x / sizeOfTheGrid);
-        coordinateZ = Mathf.RoundToInt(transform.position.z / sizeOfTheGrid);
-
         textMesh = GetComponentInChildren<TextMesh>();
-        string labelText = coordinateX + ","+ coordinateZ;
+        string labelText = 
+            waypoint.GetGridPos().x / waypoint.GetGridSize() + 
+            ","+ 
+            waypoint.GetGridPos().y / waypoint.GetGridSize();
         textMesh.text = labelText;
+
         gameObject.name = labelText;
-    }
-        private void NamingCube()
-    {
-        gameObject.name = coordinateX + ","+ coordinateZ;
     }
 }
