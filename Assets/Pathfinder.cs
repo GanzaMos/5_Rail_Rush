@@ -20,6 +20,8 @@ public class Pathfinder : MonoBehaviour
 
     bool isRunning = true;
 
+    Waypoint searchCenter;
+
     void Start()
     {
         DictionaryOfBlocks();
@@ -34,47 +36,44 @@ public class Pathfinder : MonoBehaviour
 
         while (queue.Count > 0 && isRunning)
         {
-            var searchCenter = queue.Dequeue();
-            HaltIfReachEnd(searchCenter);
-            print("Start search at " + searchCenter);
+            searchCenter = queue.Dequeue();
+            HaltIfReachEnd();
             searchCenter.isExploring = true;
-            ExploreNeighbours(searchCenter);
+            ExploreNeighbours();
         }
 
 
     }
 
-    private void HaltIfReachEnd(Waypoint searchCenter)
+    private void HaltIfReachEnd()
     {
         if (searchCenter == endWaypoint)
         {
-            print("We rich the end waypoint");
             isRunning = false;
         }
     }
 
-    void ExploreNeighbours (Waypoint from)
+    void ExploreNeighbours()
     {
         if (!isRunning) return;
 
         foreach(Vector2Int direction in directions)
         {
-            Vector2Int explorationCoordinates = from.GetGridPos() + direction;
+            Vector2Int explorationCoordinates = searchCenter.GetGridPos() + direction;
             try
             {
-                var exploreNeighbour = grid[explorationCoordinates];
-                if (!exploreNeighbour.isExploring)
+                var neighbour = grid[explorationCoordinates];
+                if (!neighbour.isExploring || queue.Contains(neighbour))
                 {
-                    exploreNeighbour.SetTopColor(Color.blue);
-                    queue.Enqueue(exploreNeighbour);
-                    print("Add to queue " + exploreNeighbour.GetGridPos());
+                    neighbour.SetTopColor(Color.blue);
+                    queue.Enqueue(neighbour);
+                    neighbour.exploredFromWaypoint = searchCenter;
                 }
             }
             catch
             {
                 //do nothing
             }
-            
         }
     }
 
@@ -82,21 +81,10 @@ public class Pathfinder : MonoBehaviour
     {
         foreach (Waypoint waypoint in FindObjectsOfType<Waypoint>())
         {
-            if (grid.ContainsKey(waypoint.GetGridPos()))
-            {
-                print("Duplicate Block in position " + waypoint.GetGridPos());
-            }
-            else
+            if (!grid.ContainsKey(waypoint.GetGridPos()))
             {
                 grid.Add(waypoint.GetGridPos(), waypoint);
             }
         }
-        print("Number of Blocks - " + grid.Count);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
