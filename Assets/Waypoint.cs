@@ -9,6 +9,7 @@ public class Waypoint : MonoBehaviour
     public typeOfBlock blockType = typeOfBlock.Regular;
     Vector2Int gridPos;
     const int gridSize = 10;
+    public bool isExploring = false;
 
     public void SetTopColor(Color color)
     {
