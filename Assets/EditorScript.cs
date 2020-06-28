@@ -26,18 +26,18 @@ public class EditorScript : MonoBehaviour
     {
         int sizeOfTheGrid = waypoint.GetGridSize();
         transform.position = new Vector3(
-            waypoint.GetGridPos().x,
+            waypoint.GetGridPos().x * sizeOfTheGrid,
             0f,
-            waypoint.GetGridPos().y
+            waypoint.GetGridPos().y * sizeOfTheGrid
         );
     }
         private void LabelUpdate()
     {
         textMesh = GetComponentInChildren<TextMesh>();
         string labelText = 
-            waypoint.GetGridPos().x / waypoint.GetGridSize() + 
+            waypoint.GetGridPos().x + 
             ","+ 
-            waypoint.GetGridPos().y / waypoint.GetGridSize();
+            waypoint.GetGridPos().y;
         textMesh.text = labelText;
 
         gameObject.name = labelText;
