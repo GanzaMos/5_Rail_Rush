@@ -17,20 +17,44 @@ public class Pathfinder : MonoBehaviour
     };
 
     Queue<Waypoint> queue = new Queue<Waypoint>();
+    List<Waypoint> path = new List<Waypoint>();
+
+    public List<Waypoint> GetPath()
+    {
+        DictionaryOfBlocks();
+        BreathFirstSearch();
+        ColorStartAndEnd();
+        CreatePath();
+        return path;
+    }
 
     bool isRunning = true;
 
     Waypoint searchCenter;
 
-    void Start()
+    private void CreatePath()
     {
-        DictionaryOfBlocks();
-        PathFind();
+        path.Add(endWaypoint);
+        Waypoint previous = endWaypoint.exploredFromWaypoint;
+
+        while(previous != startWaypoint)
+        {
+            path.Add(previous);
+            previous = previous.exploredFromWaypoint;
+        }
+
+        path.Add(startWaypoint);
+
+        path.Reverse();
+    }
+
+    private void ColorStartAndEnd()
+    {
         startWaypoint.SetTopColor(Color.green);
         endWaypoint.SetTopColor(Color.red);
     }
 
-    private void PathFind()
+    private void BreathFirstSearch()
     {
         queue.Enqueue(startWaypoint);
 
@@ -60,7 +84,7 @@ public class Pathfinder : MonoBehaviour
         foreach(Vector2Int direction in directions)
         {
             Vector2Int explorationCoordinates = searchCenter.GetGridPos() + direction;
-            try
+            if (grid.ContainsKey(explorationCoordinates))
             {
                 var neighbour = grid[explorationCoordinates];
                 if (!neighbour.isExploring || queue.Contains(neighbour))
@@ -69,10 +93,6 @@ public class Pathfinder : MonoBehaviour
                     queue.Enqueue(neighbour);
                     neighbour.exploredFromWaypoint = searchCenter;
                 }
-            }
-            catch
-            {
-                //do nothing
             }
         }
     }
