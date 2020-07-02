@@ -18,11 +18,11 @@ public class EditorScript : MonoBehaviour
 
     void Update()
     {
-        SnapToGrid();
+        SnapToGrid(waypoint);
         LabelUpdate();
     }
 
-    private void SnapToGrid()
+    private void SnapToGrid(Waypoint waypoint)
     {
         int sizeOfTheGrid = waypoint.GetGridSize();
         transform.position = new Vector3(

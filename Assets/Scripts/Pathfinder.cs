@@ -23,7 +23,7 @@ public class Pathfinder : MonoBehaviour
     {
         DictionaryOfBlocks();
         BreathFirstSearch();
-        ColorStartAndEnd();
+        //ColorStartAndEnd();
         CreatePath();
         return path;
     }
@@ -48,11 +48,11 @@ public class Pathfinder : MonoBehaviour
         path.Reverse();
     }
 
-    private void ColorStartAndEnd()
+/*     private void ColorStartAndEnd()
     {
         startWaypoint.SetTopColor(Color.green);
         endWaypoint.SetTopColor(Color.red);
-    }
+    } */
 
     private void BreathFirstSearch()
     {
@@ -87,9 +87,9 @@ public class Pathfinder : MonoBehaviour
             if (grid.ContainsKey(explorationCoordinates))
             {
                 var neighbour = grid[explorationCoordinates];
-                if (!neighbour.isExploring || queue.Contains(neighbour))
+                if ((!neighbour.isExploring || queue.Contains(neighbour)) && neighbour.blockType == Waypoint.blockTypeEnum.Enemy)
                 {
-                    neighbour.SetTopColor(Color.blue);
+                    //neighbour.SetTopColor(Color.blue);
                     queue.Enqueue(neighbour);
                     neighbour.exploredFromWaypoint = searchCenter;
                 }
@@ -101,7 +101,7 @@ public class Pathfinder : MonoBehaviour
     {
         foreach (Waypoint waypoint in FindObjectsOfType<Waypoint>())
         {
-            if (!grid.ContainsKey(waypoint.GetGridPos()))
+            if (!grid.ContainsKey(waypoint.GetGridPos()) && waypoint.blockType == Waypoint.blockTypeEnum.Enemy)
             {
                 grid.Add(waypoint.GetGridPos(), waypoint);
             }

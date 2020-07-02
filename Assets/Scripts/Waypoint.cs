@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
-    
-    public enum typeOfBlock {Start, End, Regular}
-    public typeOfBlock blockType = typeOfBlock.Regular;
     Vector2Int gridPos;
     const int gridSize = 10;
     public bool isExploring = false;
 
     public Waypoint exploredFromWaypoint;
 
-    public void SetTopColor(Color color)
+/*     public void SetTopColor(Color color)
     {
         transform.Find("Top").GetComponent<MeshRenderer>().material.color = color;
-    }
+    } */
+
+    public enum blockTypeEnum {Enemy, Friendly, Neutral};
+    public blockTypeEnum blockType = blockTypeEnum.Enemy;
 
     public int GetGridSize()
     {
