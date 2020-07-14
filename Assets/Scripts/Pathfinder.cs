@@ -24,6 +24,11 @@ public class Pathfinder : MonoBehaviour
         GetPath();
     }
 
+    public Waypoint GetStartWaypoint()
+    {
+        return startWaypoint;
+    }
+
     public List<Waypoint> GetPath()
     {
         DictionaryOfBlocks();
