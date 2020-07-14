@@ -6,28 +6,46 @@ using UnityEngine;
 public class TowerScript : MonoBehaviour
 {
 
-    EnemyMovement enemy;
+    EnemyMovement[] enemies;
     [SerializeField] int towerRange = 30;
-
-    void Start()
-    {
-        enemy = FindObjectOfType<EnemyMovement>();
-    }
 
     void Update()
     {
-        if(enemy) {LookAndFire();}
-        else {ParticlesEnableStatus(false);}
+        enemies = FindObjectsOfType<EnemyMovement>();
+        CheckForEnemies();
     }
 
-    private void LookAndFire()
+    private void CheckForEnemies()
     {
-        Vector3 distance = gameObject.transform.position - enemy.transform.position;
+        if (enemies.Length > 0)
+        {
+            SearchForClosestEnemy();
+        }
+        else
+        {
+            ParticlesEnableStatus(false);
+        }
+    }
 
-        if (enemy && distance.magnitude < towerRange)
+    private void SearchForClosestEnemy()
+    {
+        float minDistance = 1000f;
+        EnemyMovement closestEnemy = enemies[0];
+
+        foreach (var currentEnemy in enemies)
+        {
+            float distance = Vector3.Distance(gameObject.transform.position, currentEnemy.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closestEnemy = currentEnemy;
+            }
+        }
+        
+        if (Vector3.Distance(gameObject.transform.position, closestEnemy.transform.position) < towerRange)
         {
             ParticlesEnableStatus(true);
-            GetComponentInChildren<LookAtTheEnemy>().LookAtTheEnemyMethod(enemy.transform);
+            GetComponentInChildren<LookAtTheEnemy>().LookAtTheEnemyMethod(closestEnemy.transform);
         }
         else
         {

@@ -39,7 +39,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642557388}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -81,7 +81,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642557388}
-  m_Text: 4,0
+  m_Text: 0,0
   m_OffsetZ: 0
   m_CharacterSize: 0.83
   m_LineSpacing: 1
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4681361516265131853}
   - component: {fileID: 9151015230888217791}
   m_Layer: 0
-  m_Name: Cube Block
+  m_Name: Friendly Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,9 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f7bdd6eefdde143938c382126fca66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockType: 1
   isExploring: 0
   exploredFromWaypoint: {fileID: 0}
+  blockType: 1
 --- !u!1 &4681361516808901150
 GameObject:
   m_ObjectHideFlags: 0
