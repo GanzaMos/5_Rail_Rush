@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         Pathfinder pathfinder = FindObjectOfType<Pathfinder>();
-        var path = pathfinder.GetPath();
+        var path = pathfinder.path;
         StartCoroutine(EnemyMoving(path));
     }
 

@@ -17,7 +17,12 @@ public class Pathfinder : MonoBehaviour
     };
 
     Queue<Waypoint> queue = new Queue<Waypoint>();
-    List<Waypoint> path = new List<Waypoint>();
+    public List<Waypoint> path = new List<Waypoint>();
+
+    void Awake()
+    {
+        GetPath();
+    }
 
     public List<Waypoint> GetPath()
     {
