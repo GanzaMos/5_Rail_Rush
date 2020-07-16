@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 12791334}
   - component: {fileID: 12791335}
-  - component: {fileID: 12791336}
   m_Layer: 0
   m_Name: World
   m_TagString: Untagged
@@ -246,18 +245,6 @@ MonoBehaviour:
   startWaypoint: {fileID: 2099058218}
   endWaypoint: {fileID: 1655952906}
   path: []
---- !u!114 &12791336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12791333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 483cb02625ff21a4980c79d2edff9896, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &22459297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2471,7 +2458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f4bfca317b98134dbe9941bbcadab16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1822616728, guid: 0dc657ece5d6f514297eb54082bc243b, type: 3}
+  enemyPrefab: {fileID: 1027829975520572166, guid: 04f81ff9814844ccfa08226f8d46a3f4, type: 3}
   secondsBetweenSpawn: 2
 --- !u!1001 &838320159
 PrefabInstance:

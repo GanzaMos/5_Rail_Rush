@@ -39,7 +39,6 @@ public class Pathfinder : MonoBehaviour
     }
 
     bool isRunning = true;
-
     Waypoint searchCenter;
 
     private void CreatePath()
@@ -49,21 +48,13 @@ public class Pathfinder : MonoBehaviour
 
         while(previous != startWaypoint)
         {
-            path.Add(previous);
             previous = previous.exploredFromWaypoint;
+            path.Add(previous);
         }
-
-        path.Add(startWaypoint);
 
         path.Reverse();
     }
-
-/*     private void ColorStartAndEnd()
-    {
-        startWaypoint.SetTopColor(Color.green);
-        endWaypoint.SetTopColor(Color.red);
-    } */
-
+    
     private void BreathFirstSearch()
     {
         queue.Enqueue(startWaypoint);
@@ -75,8 +66,6 @@ public class Pathfinder : MonoBehaviour
             searchCenter.isExploring = true;
             ExploreNeighbours();
         }
-
-
     }
 
     private void HaltIfReachEnd()
