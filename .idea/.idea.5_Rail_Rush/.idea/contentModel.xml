@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Ganza\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Ganza\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_5_Rail_Rush.366114170.00" t="ExcludeRecursive" />
+    <e p="E:\Unity\Сurse\5_Rail_Rush" t="IncludeRecursive">
+      <e p="5_Rail_Rush.sln" t="IncludeFlat" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="CollisionScript.cs" t="Include" />
+          <e p="EditorScript.cs" t="Include" />
+          <e p="EnemyMovement.cs" t="Include" />
+          <e p="EnemySpawner.cs" t="Include" />
+          <e p="Pathfinder.cs" t="Include" />
+          <e p="SimleEditorScript.cs" t="Include" />
+          <e p="Tower Scripts" t="Include">
+            <e p="LookAtTheEnemy.cs" t="Include" />
+            <e p="TowerScript.cs" t="Include" />
+          </e>
+          <e p="Waypoint.cs" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

@@ -9,14 +9,12 @@ public class Waypoint : MonoBehaviour
     public bool isExploring = false;
 
     public Waypoint exploredFromWaypoint;
-
-/*     public void SetTopColor(Color color)
-    {
-        transform.Find("Top").GetComponent<MeshRenderer>().material.color = color;
-    } */
-
+    
     public enum blockTypeEnum {Enemy, Friendly, Neutral};
     public blockTypeEnum blockType = blockTypeEnum.Enemy;
+
+    [SerializeField] TowerScript tower;
+    private bool _towerSet = false;
 
     public int GetGridSize()
     {
@@ -29,6 +27,16 @@ public class Waypoint : MonoBehaviour
             Mathf.RoundToInt(transform.position.x / gridSize),
             Mathf.RoundToInt(transform.position.z / gridSize)
         );
+    }
+
+    void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(0) && blockType == blockTypeEnum.Friendly && _towerSet == false)
+        {
+            Instantiate(tower, transform.position, Quaternion.identity);
+            _towerSet = true;
+        }
+        
     }
 
 }

@@ -7,8 +7,8 @@ public class EnemySpawner : MonoBehaviour
 {
 
     [SerializeField] EnemyMovement enemyPrefab;
-    [SerializeField] int secondsBetweenSpawn = 2;
-    
+    [SerializeField] float secondsBetweenSpawn = 2f;
+
     void Start()
     {
         Pathfinder pathfinder = FindObjectOfType<Pathfinder>();

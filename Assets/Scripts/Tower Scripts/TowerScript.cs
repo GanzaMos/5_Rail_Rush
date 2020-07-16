@@ -34,7 +34,7 @@ public class TowerScript : MonoBehaviour
 
         foreach (var currentEnemy in enemies)
         {
-            float distance = Vector3.Distance(gameObject.transform.position, currentEnemy.transform.position);
+            float distance = Vector3.Distance(transform.position, currentEnemy.transform.position);
             if (distance < minDistance)
             {
                 minDistance = distance;
@@ -42,7 +42,9 @@ public class TowerScript : MonoBehaviour
             }
         }
         
-        if (Vector3.Distance(gameObject.transform.position, closestEnemy.transform.position) < towerRange)
+        float distanceToClosestEnemy = Vector3.Distance(transform.position, closestEnemy.transform.position);
+
+        if (distanceToClosestEnemy < towerRange)
         {
             ParticlesEnableStatus(true);
             GetComponentInChildren<LookAtTheEnemy>().LookAtTheEnemyMethod(closestEnemy.transform);
