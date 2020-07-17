@@ -8,6 +8,7 @@ public class TowerScript : MonoBehaviour
 
     EnemyMovement[] enemies;
     [SerializeField] int towerRange = 30;
+    public Waypoint baseWaypoint;
 
     void Update()
     {

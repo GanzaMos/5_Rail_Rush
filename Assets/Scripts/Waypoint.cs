@@ -14,7 +14,7 @@ public class Waypoint : MonoBehaviour
     public blockTypeEnum blockType = blockTypeEnum.Enemy;
 
     [SerializeField] TowerScript tower;
-    private bool _towerSet = false;
+    public bool _towerSet = false;
 
     public int GetGridSize()
     {
@@ -33,8 +33,7 @@ public class Waypoint : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && blockType == blockTypeEnum.Friendly && _towerSet == false)
         {
-            Instantiate(tower, transform.position, Quaternion.identity);
-            _towerSet = true;
+            FindObjectOfType<TowerFactory>().AddTower(this);
         }
         
     }

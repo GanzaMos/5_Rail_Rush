@@ -106,6 +106,7 @@ MonoBehaviour:
   hitPoints: 10
   hitParticle: {fileID: 1144091927466241965}
   deathParticle: {fileID: 198537984209914932, guid: 1a51bfda454239a41afb7dee687c6ac0, type: 3}
+  _hierarchyLevel: {fileID: 0}
 --- !u!114 &1027829975520572166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 424279d1fa918574281e7bd6674c5c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _secondsBetweenMovement: 1
 --- !u!54 &1441456416965875622
 Rigidbody:
   m_ObjectHideFlags: 0
