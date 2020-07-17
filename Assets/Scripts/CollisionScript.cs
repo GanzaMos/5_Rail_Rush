@@ -20,10 +20,15 @@ public class CollisionScript : MonoBehaviour
         
         if (hitPoints <= 0)
         {
-            Destroy(gameObject);
-            var deathVFX = Instantiate(deathParticle, transform.position, Quaternion.identity);
-            deathVFX.transform.parent = this.transform.parent;
-            Destroy(deathVFX, deathVFX.main.duration);
+            KillEnemy();
         }
+    }
+
+    public void KillEnemy()
+    {
+        Destroy(gameObject);
+        var deathVFX = Instantiate(deathParticle, transform.position, Quaternion.identity);
+        deathVFX.transform.parent = this.transform.parent;
+        Destroy(deathVFX, deathVFX.main.duration);
     }
 }
